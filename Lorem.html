@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id = but1>Prev</button>
+  <img src="/Assets/1.jpg" id ="picSlider">
+<button id = but2>Next</button>
+<script>
+ let index = 0;
+
+ let imgElement = document.getElementById ("picSlider");
+ document.getElementById('but1').addEventListener("click",changePic);
+document.getElementsByTagName('button')[1].addEventListener("click",()=>changePic('nxt'));
+let picturesArray =[
+"/Assets/1.jpg",
+"/Assets/2.jpg",
+"/Assets/3.jpg",
+"/Assets/4.jpg",
+"/Assets/5.jpg",
+"/Assets/6.jpg",
+"/Assets/7.jpg",
+"/Assets/8.jpg",
+"/Assets/9.jpg",
+"/Assets/10.jpg",
+"/Assets/11.jpg",
+"/Assets/12.jpg"
+]
+let setIntervalObj = setInterval(changePic,3000);
+function changePic(action) {
+ if (action = 'nxt'){
+  nextPic()
+ } 
+
+else{
+  previousPic()
+}
+imgElement.src = picturesArray[index]
+}
+function nextPic(){
+  index++;
+  if (index>=picturesArray.length){
+  index = 0;
+}
+}
+function previousPic(){
+  index--;
+  if (index<0){
+    index = picturesArray.length-1;
+  }
+}
+
+imgElement.addEventListener("click",()=>clearInterval(setIntervalObj))
+</script>
+</body>
+</html>
